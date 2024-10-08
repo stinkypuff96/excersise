@@ -1,2 +1,5 @@
 def sum(values: list[int]) -> int:
-    return 0
+    result = 0
+    for num in values:
+        result += num
+    return result
