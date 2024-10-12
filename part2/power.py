@@ -1,2 +1,3 @@
 def power(base: int, exponent: int) -> int:
-    return base ** exponent
+    int_power = base ** exponent
+    return int_power

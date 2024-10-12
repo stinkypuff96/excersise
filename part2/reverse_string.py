@@ -1,2 +1,5 @@
 def reverse_string(s: str) -> str:
-    return s[::-1]
+    for i in s:
+        return s[::-1]
+    if s[::-1] == '':
+        return s
