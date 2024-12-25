@@ -1,3 +1,5 @@
+# is the number prime
+
 def is_prime(num):
     if num % 2 == 0:
         print('The number you chose is a prime number')
