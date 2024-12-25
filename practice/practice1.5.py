@@ -1,7 +1,4 @@
-# test_string = input('Please enter a sentence containing at least 5 words: ')
-# result = test_string.split()
-#
-# print(result[::-1])
+# reverse a word
 
 
 def reverse(x):
