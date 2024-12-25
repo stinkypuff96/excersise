@@ -1,9 +1,9 @@
-def is_prime():
-    return int(input('Give me a number: '))
+def is_prime(num):
+    if num % 2 == 0:
+        print('The number you chose is a prime number')
+    else:
+        print('The number you chose is not a prime number')
 
 
-num = is_prime()
-if num % 2 == 0:
-    print('The number you chose is a prime number.')
-else:
-    print('The number you chose is not a prime number.')
+player_num = int(input('Choose a number: '))
+is_prime(player_num)
