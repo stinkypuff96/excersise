@@ -9,7 +9,6 @@ def dice_roll() -> int:
     return all_dice
 
 
-
 def rpg_game():
     print('Welcome to Wizard Coast RPG.')
     print('You wake up in a dark and damp room.')
