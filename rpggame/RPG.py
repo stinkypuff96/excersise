@@ -10,9 +10,9 @@ def dice_roll() -> int:
 
 
 def rpg_game():
-    print('Welcome to Wizard Coast RPG.')
-    print('You wake up in a dark and damp room.')
-    print('You see a wooden door with metal bars for a window with a dim light coming in.')
+    print('~Welcome to Wizard Coast RPG.~')
+    print('~You wake up in a dark and damp room.~')
+    print('~You see a wooden door with metal bars for a window with a dim light coming in.~')
 
     main_location = 'Dungeon'
     current_location = 'Starting room'
@@ -20,6 +20,7 @@ def rpg_game():
     equipped = []
     defeated_enemy = []
     player_alive = True
+
     while player_alive:
         if current_location == 'Starting room':
             print(
@@ -35,11 +36,17 @@ def rpg_game():
                     look_choice = input('Where do you want to look: ')
 
                     if look_choice == '1':
-                        print('You look at the table. There is an old piece of bread')
+                        if 'Old Bread' in inventory:
+                            print('There is nothing else on the table.')
+                            continue
+                        print('You look at the table. There is an old chunk of moldy bread.')
                         inventory.append('Old Bread')
                         print('Old bread added to your inventory')
                         continue
                     elif look_choice == '2':
+                        if 'Unlit Torch' in inventory:
+                            print('There is nothing else to find.')
+                            continue
                         print(
                             'You take a look at the broken bed. At first glance there is nothing interesting on the '
                             'bed,\nbut after further inspection you find a wooden torch with old, oily cloth wrapped '
@@ -48,7 +55,18 @@ def rpg_game():
                         print('Unlit torch added to your inventory')
                         continue
                     elif look_choice == '3':
-                        print("It's just full of shit")
+                        if 'Shit Covered Mushroom' in inventory:
+                            print("It's just shit.")
+                            continue
+                        print("You look at the toilet bowl, which is filled with shit and urine from the previous"
+                              "visitors. You see a few stems of mushroom growing out of the pile of shit.")
+                        mushroom = input('Do you pick the mushrooms?(y/n): ')
+                        if mushroom == 'y':
+                            inventory.append('Shit Covered Mushroom')
+                            print('Shit Covered Mushroom added to your inventory')
+                        else:
+                            print('Might be for the best.')
+                            continue
                         continue
                     else:
                         break
@@ -124,6 +142,12 @@ def rpg_game():
                                 equipped.append('Unlit Torch')
                         else:
                             continue
+                    elif inv_choice == 'shit covered mushroom':
+                        inv_mush = input('Do you want to eat the Shit Covered Mushroom?(y/n): ')
+                        if inv_mush == 'y':
+                            roll_mush = dice_roll()
+                            if roll_mush == 18:
+
                     elif inv_choice == 'rusty sword':
                         print('This sword has seen better days.')
                         sword = input('Would you like to equip it?(y/n): ')
@@ -187,6 +211,7 @@ def rpg_game():
         if current_location == 'First corridor':
             print('You escaped your prison. What now?\n1.Look around\n2.Continue down the corridor\n3.Go back to the'
                   ' first room\n4.Look in your inventory')
+
 
 
 rpg_game()
