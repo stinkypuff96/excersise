@@ -85,7 +85,12 @@ def rpg_game():
 
                     if fight_choice == '1':
                         roll_fight = dice_roll()
-                        print(f'You rolled {roll_fight}')
+                        if 'A Nice High' in equipped:
+                            roll_fight += 2
+                        elif 'Poisoning' in equipped:
+                            roll_fight -= 2
+                            print(f'You rolled {roll_fight}')
+
                         if roll_fight >= 10:
                             print('You killed the enemy.')
                             inventory.append('Rusty Sword')
@@ -98,7 +103,12 @@ def rpg_game():
                             break
                     if fight_choice == '2':
                         roll_fight = dice_roll()
+                        if 'A Nice High' in equipped:
+                            roll_fight += 2
+                        elif 'Poisoning' in equipped:
+                            roll_fight -= 2
                         print(f'You rolled {roll_fight}')
+
                         if roll_fight >= 8:
                             print('You killed the enemy.')
                             inventory.append('Rusty Sword')
@@ -145,9 +155,15 @@ def rpg_game():
                     elif inv_choice == 'shit covered mushroom':
                         inv_mush = input('Do you want to eat the Shit Covered Mushroom?(y/n): ')
                         if inv_mush == 'y':
+                            print('Shit Covered Mushroom removed from inventory')
+                            inventory.remove('Shit Covered Mushroom')
                             roll_mush = dice_roll()
                             if roll_mush == 18:
-
+                                print('You feel an odd sensation.')
+                                equipped.append('A Nice High')
+                            else:
+                                print("You don't feel so good.")
+                                equipped.append('Poisoning')
                     elif inv_choice == 'rusty sword':
                         print('This sword has seen better days.')
                         sword = input('Would you like to equip it?(y/n): ')
@@ -180,6 +196,10 @@ def rpg_game():
 
                             if fight_choice == '1':
                                 roll_fight = dice_roll()
+                                if 'A Nice High' in equipped:
+                                    roll_fight += 2
+                                elif 'Poisoning' in equipped:
+                                    roll_fight -= 2
                                 print(f'You rolled {roll_fight}')
                                 if roll_fight >= 10:
                                     print('You killed the enemy.')
@@ -193,6 +213,10 @@ def rpg_game():
                                     break
                             if fight_choice == '2':
                                 roll_fight = dice_roll()
+                                if 'A Nice High' in equipped:
+                                    roll_fight += 2
+                                elif 'Poisoning' in equipped:
+                                    roll_fight -= 2
                                 print(f'You rolled {roll_fight}')
                                 if roll_fight >= 8:
                                     print('You killed the enemy.')
