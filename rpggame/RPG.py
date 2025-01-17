@@ -20,6 +20,7 @@ def rpg_game():
     equipped = []
     defeated_enemy = []
     player_alive = True
+    gold = 0
 
     while player_alive:
         if current_location == 'Starting room':
@@ -96,6 +97,8 @@ def rpg_game():
                             inventory.append('Rusty Sword')
                             print('Rusty Sword added to inventory.')
                             defeated_enemy.append('Skeleton')
+                            print('You found 5 Gold')
+                            gold += 5
                             break
                         else:
                             print('You died.')
@@ -114,6 +117,8 @@ def rpg_game():
                             inventory.append('Rusty Sword')
                             print('Rusty sword added to inventory.')
                             defeated_enemy.append('Skeleton')
+                            print('You found 5 Gold')
+                            gold += 5
                             break
                         else:
                             print('You died.')
@@ -127,7 +132,7 @@ def rpg_game():
                         print(f'In your inventory you have {inventory}')
 
                 elif choice == '5':
-                    print(f'In your inventory you have {inventory}')
+                    print(f'In your inventory you have {inventory} and {gold} Gold')
                     inv_choice = input('Would you like to use something?(Hint: Write an item or write "No"): ').lower()
                     if inv_choice == 'old bread':
                         print('You found a Rusty Key in the bread.')
@@ -232,10 +237,44 @@ def rpg_game():
                     else:
                         print('The door requires a key to open.')
                         break
+                else:
+                    print('Pick an available choice')
+                    break
         if current_location == 'First corridor':
             print('You escaped your prison. What now?\n1.Look around\n2.Continue down the corridor\n3.Go back to the'
                   ' first room\n4.Look in your inventory')
-
-
+            choice1 = input('What do you do?: ')
+            if choice1 == '1':
+                print('You look around the long corridor. Outside of the door at the end of it and the lit torch on the'
+                      'wall, there is nothing else.\n1.Look at the door\n2.Look at the lit torch\n3.Stop '
+                      'looking around\n4.Look around again')
+                look_choice1 = input('What do you do?: ')
+                if look_choice1 == '1':
+                    print('Just a steel reinforced wooden door.')
+                if look_choice1 == '2':
+                    if 'Unlit Torch' in inventory:
+                        print("It's a lit torch, just like the one you have.")
+                        torch_choice_inv = input('Would you like to light your torch?(Hint: Lighting your torch would '
+                                                 'equip it.)(y/n): ')
+                        if torch_choice_inv == 'y':
+                            inventory.remove('Unlit Torch')
+                            equipped.append('Lit Torch')
+                            print('You now see better in the dark.')
+                        else:
+                            continue
+                    elif 'Unlit Torch' in equipped:
+                        print("It's a lit torch, just like the one you have.")
+                        torch_choice_equip = input(
+                            'Would you like to light your torch?(y/n): ')
+                        if torch_choice_equip == 'y':
+                            equipped.remove('Unlit Torch')
+                            equipped.append('Lit Torch')
+                            print('You now see better in the dark.')
+                    else:
+                        print("It's a lit torch.")
+                        new_torch = input('Would you like to take it?(y/n): ')
+                        if new_torch == 'y':
+                            print('You have equipped the Lit Torch.')
+                            equipped.append('Lit Torch')
 
 rpg_game()
