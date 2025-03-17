@@ -9,7 +9,7 @@ while True:
     guess_count += 1
 
     if solution == guess:
-        print(f"You got it in {guess_count}")
+        print(f"You got it in {guess_count} attempts!")
         break
 
     if guess_count == 15:
