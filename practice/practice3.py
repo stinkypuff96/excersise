@@ -1,6 +1,5 @@
 import random
 
-running = True
 
 word_list = ["smile", "hike", "motorcycle", "bathtub", "orange", "Uzbekistan", "warehouse", "balcony", "royalty",
              "keyboard"]
@@ -11,12 +10,17 @@ random.shuffle(shuffled)
 shuffled_word = "".join(shuffled)
 print(shuffled_word)
 print(guess_count)
-while running:
+while True:
     u_input = input('Guess the word: ')
+
+    if u_input == "quit":
+        print(f'The correct word was: {word}')
+        break
+
     guess_count += 1
     if u_input.lower() == word.lower():
         print(f"You guessed the word in {guess_count} guess/es!")
-        running = False
+
         if guess_count == 1:
             print('Excellent!')
         elif 2 <= guess_count <= 3:
@@ -25,6 +29,7 @@ while running:
             print('Good')
         else:
             print('Try Harder.')
+        break
 
     else:
         print("That is wrong!")
