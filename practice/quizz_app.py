@@ -308,7 +308,10 @@ def play_normal():
     for q in normal_questions:
         formatted = f"{q['question']}\n" + "\n".join(q['choices'])
         user_answer = get_answer(formatted, "Answer (1-4): ", ["1", "2",
-                                                               "3", "4"])
+                                                               "3", "4", "quit"]).lower()
+        if user_answer == "quit":
+            print("Quiz exited. No results saved.")
+            return
         is_correct = user_answer == q['answer']
         if is_correct:
             correct_normal += 1
@@ -323,6 +326,7 @@ def play_normal():
             "is_correct": is_correct
         })
     print(f"You got {correct_normal} correct and {incorrect_normal} incorrect.")
+    quizz_completed = True
     if correct_normal == 10:
         print('Excellent! You got them all right!')
     elif correct_normal >= 7:
@@ -333,7 +337,8 @@ def play_normal():
         print('Maybe you should try again.')
     else:
         print('You should learn more about the world.')
-    save_results(results_file, results)
+    if quizz_completed:
+        save_results(results_file, results, difficulty="normal")
 
 def play_hard():
     correct_hard = 0
@@ -343,7 +348,10 @@ def play_hard():
     for q in hard_questions:
         formatted = f"{q['question']}\n" + "\n".join(q['choices'])
         user_answer = get_answer(formatted, "Answer (1-4):", ["1", "2",
-                                                              "3", "4"])
+                                                              "3", "4", "quit"]).lower()
+        if user_answer == "quit":
+            print("Quiz exited. No results saved.")
+            return
         is_correct = user_answer == q['answer']
         if is_correct:
             correct_hard += 1
@@ -374,6 +382,7 @@ def play_hard():
                 results.append({
                     "difficulty": "hard",
                     "question": q["question"],
+                    "choices": q["choices"],
                     "your_answer": bonus_user_answer,
                     "correct_answer": q["answer"],
                     "is_correct": is_correct_b,
@@ -382,6 +391,7 @@ def play_hard():
     elif correct_hard < 7:
         print("You didn't get enough points to try the Bonus Question.")
     print(f"You got {correct_hard} correct and {incorrect_hard} incorrect.")
+    quizz_completed = True
 
     if correct_hard > 12:
         print('You did exceptionally well!')
@@ -396,7 +406,8 @@ def play_hard():
     else:
         print('You should learn more about the world.')
 
-    save_results(results_file, results)
+    if quizz_completed:
+        save_results(results_file, results, difficulty="hard")
 
 
 
