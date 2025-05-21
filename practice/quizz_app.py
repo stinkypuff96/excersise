@@ -1,5 +1,6 @@
 import json
 import os
+import random
 
 def save_results(filename, new_results, difficulty):          # save results on .json file
     try:
@@ -50,6 +51,7 @@ def get_answer(question_text, prompt, valid_choices=None):       # function to s
         else:
             return answer
 
+
 easy_questions = [     # Putting the questions in dictionaries
     {
         "question": 'What is the capital of Germany?',
@@ -97,6 +99,46 @@ easy_questions = [     # Putting the questions in dictionaries
                     "other countries in the world?",
         "choices": ["1. 24", "2. 7", "3. The U.S. has not been at war recently", "4. 12"],
         "answer": "1"
+    },
+    {
+        "question": "Who was the first president of the United States?",
+        "choices": ["1. Abraham Lincoln", "2. George Washington", "3. John Adams", "4. Thomas Jefferson"],
+        "answer": "2"
+    },
+    {
+        "question": "Which continent is the Sahara Desert located in?",
+        "choices": ["1. Asia", "2. Australia", "3. Africa", "4. South America"],
+        "answer": "3"
+    },
+    {
+        "question": "In which country did the COVID-19 pandemic first begin?",
+        "choices": ["1. USA", "2. China", "3. Italy", "4. India"],
+        "answer": "2"
+    },
+    {
+        "question": "Which is the primary language spoken in Brazil?",
+        "choices": ["1. Spanish", "2. English", "3. Portuguese", "4. French"],
+        "answer": "3"
+    },
+    {
+        "question": "Which war ended with the Treaty of Versailles in 1919?",
+        "choices": ["1. World War I", "2. World War II", "3. Vietnam War", "4. Korean War"],
+        "answer": "1"
+    },
+    {
+        "question": "Which country built the Great Wall to protect against invasion?",
+        "choices": ["1. India", "2. China", "3. Russia", "4. Japan"],
+        "answer": "2"
+    },
+    {
+        "question": "Which U.S. president is known for ending slavery?",
+        "choices": ["1. George Washington", "4. Theodore Roosevelt", "3. Barack Obama", "4. Abraham Lincoln"],
+        "answer": "4"
+    },
+    {
+        "question": "What currency is used in most European Union countries?",
+        "choices": ["1. Lev", "2. Euro-dollar", "3. Franc", "4. Euro"],
+        "answer": "4"
     }
 ]
 
@@ -165,6 +207,61 @@ normal_questions = [
                     " an open-air prison?",
         "choices": ["1. Israel", "2. Syria", "3. Egypt", "4. Iran"],
         "answer": "1"
+    },
+    {
+        "question": "What was the main reason the United States got involved in the Vietnam War?",
+        "choices": ["1. Oil interests", "2. Stop the spread of communism",
+                    "3. Retaliation for Pearl Harbor", "4. Trade routes"],
+        "answer": "2"
+    },
+    {
+        "question": "Which African country was never colonized by European powers?",
+        "choices": ["1. Nigeria", "2. Ethiopia", "3. Ghana", "4. Kenya"],
+        "answer": "2"
+    },
+    {
+        "question": "Which civil rights leader was murdered during the Civil Rights Movement?",
+        "choices": ["1. Malcolm X", "2. Martin Luther King Jr.", "3. Fred Hampton", "4. All of the above"],
+        "answer": "4"
+    },
+    {
+        "question": "The CIA-backed coup in Chile in 1973 overthrew which democratically elected leader?",
+        "choices": ["1. Salvador Allende", "2. Hugo Chavez", "3. Che Guevara", "4. Augusto Pinochet"],
+        "answer": "1"
+    },
+    {
+        "question": "Which European country colonized India before its independence in 1947?",
+        "choices": ["1. France", "2. Spain", "3. Britain", "4. Germany"],
+        "answer": "3"
+    },
+    {
+        "question": "After a CIA-backed coup in Chile in 1973, which leader executed over 3000 leftists, \n"
+                    "socialists and political critics?",
+        "choices": ["1. Salvador Allende", "2. Hugo Chavez", "3. Che Guevara", "Augusto Pinochet"],
+        "answer": "4"
+    },
+    {
+        "question": "Which 20th century U.S. war was largely opposed by the American public and led to \n"
+                    "widespread protests?",
+        "choices": ["1. Korean War", "2. Vietnam War", "3. Iraq War", "4. World War I"],
+        "answer": "2"
+    },
+    {
+        "question": "Which event exposed the U.S. government’s surveillance of its own citizens?",
+        "choices": ["1. Pentagon Papers", "2. Watergate", "3. Snowden Leaks", "4. WikiLeaks"],
+        "answer": "3"
+    },
+    {
+        "question": "Which European country colonized the Congo, leading to one of the most \n"
+                    "brutal colonial regimes?",
+        "choices": ["1. France", "2. Belgium", "3. Portugal", "4. Germany"],
+        "answer": "2"
+    },
+    {
+        "question": "Which U.S. military prison became infamous for torture and human rights \n"
+                    "violations during the Iraq War?",
+        "choices": ["1. Alcatraz", "2. Abu Ghraib", "3. Rikers Island", "4. Fort Leavenworth"],
+        "answer": "2"
     }
 ]
 
@@ -248,6 +345,80 @@ hard_questions = [
         "choices": ["1. The Nationalist Movement of the 19th Century", "2. The Non-Aligned Movement",
                     "3. The Civil Rights Movement", "4. The Pan-African Movement"],
         "answer": "4"
+    },
+    {
+        "question": "Which 1977 U.S. operation provided arms and funds to Afghan Mujahideen fighters \n"
+                    "(later known as Al Qaeda) during the Cold War?",
+        "choices": ["1. Operation Desert Storm", "2. Operation Cyclone", "3. Operation Neptune", "4. Operation Enduring Freedom"],
+        "answer": "2"
+    },
+    {
+        "question": "Which 1994 agreement is often criticized for benefiting corporations over workers \n"
+                    "and small farmers in North America?",
+        "choices": ["1. Paris Agreement", "2. NAFTA", "3. GATT", "4. TPP"],
+        "answer": "2"
+    },
+    {
+        "question": "Which economist is known for promoting neoliberal policies such as \n"
+                    "deregulation and privatization?",
+        "choices": ["1. John Maynard Keynes", "2. Karl Marx", "3. Milton Friedman", "4. Thomas Piketty"],
+        "answer": "3"
+    },
+    {
+        "question": "Which company was involved in a major oil spill in the Gulf of Mexico in 2010, \n"
+                    "causing massive environmental damage?",
+        "choices": ["1. Shell", "2. ExxonMobil", "3. BP", "4. Chevron"],
+        "answer": "3"
+    },
+    {
+        "question": "What is the term for a system where corporations exert control over media, \n"
+                    "limiting public access to unbiased information?",
+        "choices": ["1. Corporate Censorship", "2. Plutocracy", "3. Media Consolidation", "4. News Saturation"],
+        "answer": "3"
+    },
+    {
+        "question": "Which infamous private military company was involved in civilian killings in \n"
+                    "Iraq and later rebranded itself?",
+        "choices": ["1. Halliburton", "2. Blackwater", "3. DynCorp", "4. KBR"],
+        "answer": "2"
+    },
+    {
+        "question": "What term is used to describe the practice of using economic policies to \n"
+                    "indirectly control and exploit developing countries?",
+        "choices": ["1. Colonialism", "2. Neocolonialism", "3. Protectionism", "4. Mercantilism"],
+        "answer": "2"
+    },
+    {
+        "question": "Which ideology views global capitalism as a key driver of inequality, environmental \n"
+                    "destruction, and imperialism?",
+        "choices": ["1. Libertarianism", "2. Marxism", "3. Nationalism", "4. Neorealism"],
+        "answer": "2"
+    },
+    {
+        "question": "Which whistleblower released the Iraq and Afghanistan war logs, exposing civilian \n"
+                    "casualties and abuses by U.S. forces?",
+        "choices": ["1. Edward Snowden", "2. Julian Assange", "3. Daniel Ellsberg", "4. Chelsea Manning"],
+        "answer": "4"
+    },
+    {
+        "question": "What was the name of the CIA operation that involved mind control experiments on \n"
+                    "unwitting subjects during the Cold War?",
+        "choices": ["1. Operation Paperclip", "2. Operation Mockingbird", "3. MK-Ultra", "4. Project Blue Book"],
+        "answer": "3"
+    },
+    {
+        "question": "Which U.S. intelligence operation aimed to influence foreign media and academic \n"
+                    "institutions during the Cold War, spreading pro-American propaganda?",
+        "choices": ["1. Operation Northwoods", "2. Operation Ajax", "3. Operation Mockingbird",
+                    "4. Operation Paperclip"],
+        "answer": "3"
+    },
+    {
+        "question": "Which country was deliberately overthrown in 1953 through a CIA- and MI6-backed \n"
+                    "coup to protect Western oil interests, despite having a democratically \n"
+                    "elected leader?",
+        "choices": ["1. Egypt", "2. Iran", "3. Chile", "4. Indonesia"],
+        "answer": "2"
     }
 ]
 
@@ -262,12 +433,17 @@ bonus_hard_question = [
     }
 ]
 
+selected_easy = random.sample(easy_questions, 8)
+selected_normal = random.sample(normal_questions, 10)
+selected_hard = random.sample(hard_questions, 12)
+
+
 def play_easy():                    # functions to start easy/normal/hard quizz
     correct_easy = 0                # score tally
     incorrect_easy = 0
     results = []
 
-    for q in easy_questions:
+    for q in selected_easy:
         formatted = f"{q['question']}\n" + "\n".join(q['choices'])
         user_answer = get_answer(formatted, "Answer (1-4): ", ["1", "2",
                                                                "3", "4", "quit"]).lower()
@@ -305,7 +481,7 @@ def play_normal():
     correct_normal = 0
     incorrect_normal = 0
     results = []
-    for q in normal_questions:
+    for q in selected_normal:
         formatted = f"{q['question']}\n" + "\n".join(q['choices'])
         user_answer = get_answer(formatted, "Answer (1-4): ", ["1", "2",
                                                                "3", "4", "quit"]).lower()
@@ -320,7 +496,7 @@ def play_normal():
         results.append({
             "difficulty": "normal",
             "question": q["question"],
-            "choives": q["choices"],
+            "choices": q["choices"],
             "your_answer": user_answer,
             "correct_answer": q["answer"],
             "is_correct": is_correct
@@ -345,7 +521,7 @@ def play_hard():
     incorrect_hard = 0
     results = []
 
-    for q in hard_questions:
+    for q in selected_hard:
         formatted = f"{q['question']}\n" + "\n".join(q['choices'])
         user_answer = get_answer(formatted, "Answer (1-4):", ["1", "2",
                                                               "3", "4", "quit"]).lower()
@@ -425,14 +601,14 @@ while True:
     difficulty = ("Choose difficulty(Easy/Normal/Hard) or write 'view' to view results \n"
                   "from previous games, or 'quit' to quit.")
     difficulty_choice = get_answer(difficulty, 'Choice: ', ['easy', 'normal', 'hard','view', 'quit']).lower()
-    if difficulty_choice == 'easy':
+    if difficulty_choice == "easy":
         print("You chose 'Easy' difficulty. Let's begin!")
         play_easy()
-    if difficulty_choice == 'normal':
+    if difficulty_choice == "normal":
         print("You chose 'Normal' difficulty. Let's begin!")
         play_normal()
 
-    elif difficulty_choice == 'hard':
+    elif difficulty_choice == "hard":
         print("You chose 'Hard' difficulty. Let's begin!")
         play_hard()
 
