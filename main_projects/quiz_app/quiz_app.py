@@ -2,7 +2,7 @@ import json
 import os
 import random
 
-from practice.questions import easy_questions, normal_questions, hard_questions, bonus_hard_question
+from main_projects.quiz_app.questions import bonus_hard_question
 
 
 def save_results(filename, new_results, difficulty):          # save results on .json file
